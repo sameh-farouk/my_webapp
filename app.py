@@ -1,5 +1,4 @@
 from flask import Flask
-from create_db import get_all_users
 app = Flask(__name__)
 
 @app.route('/')
