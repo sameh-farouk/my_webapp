@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return get_all_users()
+    return 'hello'
 
 
 if __name__ == '__main__':
