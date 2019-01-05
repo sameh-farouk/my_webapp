@@ -2,9 +2,8 @@ from flask import Flask
 from db import dal
 from create_db import get_user
 import os
-file_path = os.path.abspath(os.getcwd())+"/test.db"
 
-dal.db_init('sqlite:////'+file_path)
+dal.db_init('sqlite:///test.db')
 
 app = Flask(__name__)
 
@@ -19,4 +18,4 @@ def shutdown_session(exception=None):
 
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=True)  
