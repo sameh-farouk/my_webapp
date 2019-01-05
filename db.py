@@ -1,10 +1,13 @@
 from sqlalchemy import (create_engine, MetaData, Table, Column, Integer, String,
                         Numeric, Boolean, DateTime, ForeignKey)
+from sqlalchemy.orm import scoped_session, sessionmaker
+
 from datetime import datetime
 
 class DataAccessLayer:
     connection = None
     engine = None
+    db_session = None
     conn_string = None
 
     metadata = MetaData()
@@ -52,8 +55,12 @@ class DataAccessLayer:
         Column('product_id', Integer(), ForeignKey('products.id')),
         Column('quantity', Integer(), nullable=False),
         Column('extended_cost', Numeric(12, 2)))
+
     def db_init(self, conn_string):
         self.engine = create_engine(conn_string or self.conn_string)
+        self.db_session = scoped_session(sessionmaker(autocommit=False,
+                                         autoflush=False,
+                                         bind=self.engine))
         self.metadata.create_all(self.engine)
         self.connection = self.engine.connect()
         
