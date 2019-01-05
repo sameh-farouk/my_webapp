@@ -1,8 +1,10 @@
 from flask import Flask
 from db import dal
 from create_db import get_user
+import os
+file_path = os.path.abspath(os.getcwd())+"/test.db"
 
-dal.db_init('sqlite:///test.db')
+dal.db_init('sqlite:////'+file_path)
 
 app = Flask(__name__)
 
