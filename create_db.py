@@ -1,5 +1,5 @@
 from sqlalchemy import insert, select, update, delete
-from db import dal
+from my_webapp.db import dal
 
 def register_user():
     data={}

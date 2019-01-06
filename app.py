@@ -1,6 +1,6 @@
 from flask import Flask
-from db import dal
-from create_db import get_user
+from my_webapp.db import dal
+from my_webapp.create_db import get_user
 import os
 
 dal.db_init('sqlite:///test.db')
